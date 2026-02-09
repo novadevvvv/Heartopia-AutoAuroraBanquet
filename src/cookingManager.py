@@ -72,8 +72,10 @@ def cookFood(foodname : str) -> bool:
 
     # Cooking Loop
 
+    finishedCooking = False
+
     try:
-        while True:
+        while not finishedCooking:
 
             ovens = detectOvens() # Initial Oven Detection
 
@@ -90,6 +92,7 @@ def cookFood(foodname : str) -> bool:
 
                     log(f"Oven {ovenName} has finished cooking!")
                     click(ovenPosition)
+                    finishedCooking = True
                     break
 
             wait(0.25)
