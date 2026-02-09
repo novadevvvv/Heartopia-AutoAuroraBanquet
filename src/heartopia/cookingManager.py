@@ -27,7 +27,7 @@ newItemCheck = data.get("newItemCheck")
 
 if (not cookingPositionData or "x" not in cookingPositionData or "y" not in cookingPositionData):
     log(
-        "- ONE TIME ALIGNMENT -\nOnce you hit Enter, tab into Heartopia, move your mouse over the 'Start Cooking' button, wait a couple seconds, then come back here."
+        "- ONE TIME ALIGNMENT -\nOnce you hit Enter, tab into Heartopia, move your mouse over the 'Start Cooking' button (not on the text, on the bright teal), wait a couple seconds, then come back here."
     )
     input("Press Enter to continue")
 
@@ -101,6 +101,9 @@ def cookFood(foodname : str) -> bool:
             log(f"ERROR: Foodname `{foodname}` not detected. Ensure tesseract is installed.")
 
             return False
+
+        if not pyautogui.pixelMatchesColor(foodData[1][0],foodData[1][1], (55, 204, 198)):
+            foodData = findFood(foodname, 1)
 
         click(foodData[1]) # Click On The Food
 
