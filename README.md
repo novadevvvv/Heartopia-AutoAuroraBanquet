@@ -15,7 +15,7 @@ This script uses **image recognition and OCR** to detect ovens, manage cooking s
 
 - Set your **GUI Scale to 75%**
   
-  ![UI Scale](assets/uiScale.png)
+![UI Scale](assets/uiScale.png)
 
 - Keep **a bit of each berry** in your inventory  
   > OCR may struggle with multi-line item names and will backup to alternatives.
@@ -63,4 +63,4 @@ The following setups have proven to work well:
 ![Build 1](assets/build1.jpg)  
 ![Build 2](assets/build2.jpg)  
 ![Build 3](assets/build3.jpg)
-`
+
