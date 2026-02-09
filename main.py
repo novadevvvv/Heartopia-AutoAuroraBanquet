@@ -11,7 +11,14 @@ data = detectOvens()
 if data[0][1] == "Select Food":
     click(data[0][2])
 
-    wait(0.1)
+    wait(1)
 
-    click(findFood("coffee")[1])
+    foodData = findFood("coffee")
+
+    if foodData[0] == "coffee":
+        log("Successfully found coffee, continuing.")
+    else:
+        exit("ERROR : Coffee Not Detected, Please Ensure tesseract Is Installed.")
+
+    click(foodData[1])
 
