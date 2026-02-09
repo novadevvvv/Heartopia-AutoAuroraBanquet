@@ -5,16 +5,15 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 from .log import log
 import pytesseract
+import json
 
 pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
-validFoods = {
-    "coffee": "Iced-Cup Coffee",
-    "pancake": "Original Frosted Pancake",
-    "soup": "Creamy White Radish Soup",
-    "steak": "Steak w/ Mashed White Radish",
-    "banquet": "Aurora Banquet"
-}
+with open("config.json", "r") as file:
+    config = json.load(file)
+
+validFoods = config.get("foodData", {})
+
 
 def findFood(food: str | None = None) -> tuple:
     """
@@ -22,7 +21,7 @@ def findFood(food: str | None = None) -> tuple:
     Returns (foodKey, (x, y)) or (None, None)
     """
 
-    if food and food not in validFoods:
+    if food and food.lower() not in validFoods:
         raise ValueError(f"Invalid food '{food}'")
 
     output_dir = Path("detectedIcons")

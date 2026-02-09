@@ -48,6 +48,7 @@ def cookFood(foodname : str) -> bool:
 
     if len(ovens) < 1:
         exit("ERROR : No ovens detected")
+        return False
 
     # Start cooking if oven is ready
     if ovens[0][1] == "Select Food":
@@ -65,6 +66,8 @@ def cookFood(foodname : str) -> bool:
         else:
 
             exit(f"ERROR: Foodname `{foodname}` not detected. Ensure tesseract is installed.")
+
+            return False
 
         click(foodData[1]) # Click On The Food
 
@@ -99,3 +102,6 @@ def cookFood(foodname : str) -> bool:
 
     except KeyboardInterrupt:
         log("Oven monitoring stopped by user.")
+        return False
+
+    return True

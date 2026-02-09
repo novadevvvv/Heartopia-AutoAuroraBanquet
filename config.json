@@ -2,5 +2,12 @@
     "startCooking": {
         "x": 1477,
         "y": 998
+    },
+    "foodData": {
+        "drink": "Iced-Cup Coffee",
+        "pancake": "Original Frosted Pancake",
+        "soup": "Creamy White Radish Soup",
+        "steak": "Steak w/ Mashed White Radish",
+        "banquet": "Aurora Banquet"
     }
 }
