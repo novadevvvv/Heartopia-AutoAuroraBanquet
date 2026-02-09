@@ -112,30 +112,36 @@ def cookFood(foodname : str) -> bool:
 
     finishedCooking = False
 
-    lastState = None
+    wait(2)
+
+    handled_overheats = set()
 
     try:
         while not finishedCooking:
 
-            ovens = detectOvens() # Oven Detection
+            ovens = detectOvens()
 
             for oven in ovens:
-                
                 ovenName, ovenState, ovenPosition = oven
+                state = ovenState.lower()
 
-                if "overheating" in ovenState.lower():
+                if "overheating" in state:
+                    # Click ONLY once per overheating event
+                    if ovenName not in handled_overheats:
+                        log(f"Oven {ovenName} is overheating! Clicking once.")
+                        click(ovenPosition)
+                        handled_overheats.add(ovenName)
 
-                    log(f"Oven {ovenName} is overheating!")
-                    click(ovenPosition); lastState = ovenState if lastState != ovenState else log("Attempted to click but already clicked during this loop.")
-
-                elif "finished" in ovenState.lower():
-
-                    log(f"Oven {ovenName} has finished cooking!")
-                    click(ovenPosition); lastState = ovenState if lastState != ovenState else log("Attempted to click but already clicked during this loop.")
-                    finishedCooking = True
-                    break
                 else:
-                    lastState = ovenState
+                    # Oven is no longer overheating > allow future clicks
+                    if ovenName in handled_overheats:
+                        handled_overheats.remove(ovenName)
+
+                    if "finished" in state:
+                        log(f"Oven {ovenName} has finished cooking!")
+                        click(ovenPosition)
+                        finishedCooking = True
+                        break
 
             wait(0.25)
 
