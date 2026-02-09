@@ -47,7 +47,9 @@ while not all(REQUIREMENTS.values()):
     if not REQUIREMENTS["Banquet"]:
         log("Attempting To Cook Banquet!")
 
-        if not cookFood("banquet"):
+        success = cookFood("banquet")
+
+        if not success:
             log("Failed To Cook Banquet!")
             exit(1)
 
