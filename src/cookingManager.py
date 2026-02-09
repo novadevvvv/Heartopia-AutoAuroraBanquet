@@ -47,7 +47,7 @@ def cookFood(foodname : str) -> bool:
     ovens = detectOvens()
 
     if len(ovens) < 1:
-        exit("ERROR : No ovens detected")
+        log("ERROR : No ovens detected")
         return False
 
     # Start cooking if oven is ready
@@ -55,9 +55,15 @@ def cookFood(foodname : str) -> bool:
 
         click(ovens[0][2]) # Oven Button
 
-        wait(1) # Await UI Rendering
+        wait(1.5) # Await UI Rendering
 
         foodData = findFood(foodname)
+
+        if foodData[0] is None:
+            log(f"[ cookingManager ] : Food '{foodname}' not detected on screen!")
+            return False
+
+        log(f"\nRecieved Fooddata\n\n{foodData}\n")
 
         if foodData[0].lower() == foodname.lower():
 
@@ -65,7 +71,7 @@ def cookFood(foodname : str) -> bool:
 
         else:
 
-            exit(f"ERROR: Foodname `{foodname}` not detected. Ensure tesseract is installed.")
+            log(f"ERROR: Foodname `{foodname}` not detected. Ensure tesseract is installed.")
 
             return False
 

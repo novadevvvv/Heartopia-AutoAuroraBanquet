@@ -4,10 +4,10 @@
         "y": 998
     },
     "foodData": {
+        "steak": "Steak w/ Mashed White Radish",
+        "soup": "Creamy White Radish Soup",
         "drink": "Iced-Cup Coffee",
         "pancake": "Original Frosted Pancake",
-        "soup": "Creamy White Radish Soup",
-        "steak": "Steak w/ Mashed White Radish",
         "banquet": "Aurora Banquet"
     }
 }
