@@ -3,7 +3,12 @@ import numpy as np
 import pyautogui
 from pathlib import Path
 from time import time
-from .log import log
+from ..log import log
+
+"""
+Website: https://github.com/novadevvvv
+Dependencies: "log.py"
+"""
 
 settings = {
     "icons": {

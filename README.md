@@ -1,3 +1,5 @@
+> A NovaDev Project!
+
 # Auto Aurora Banquet Cooker
 
 Tired of cooking banquets manually and constantly worrying about ratios? This script automates the process for you.  

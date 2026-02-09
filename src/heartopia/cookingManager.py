@@ -1,11 +1,15 @@
 from time import sleep as wait
 from .getStates import detectOvens
-from .log import log
+from ..log import log
 from .interfacing import click
 from .findFood import findFood
 import json
 import pyautogui
 
+"""
+Website: https://github.com/novadevvvv
+Dependencies: "findFood.py", "getStates.py", "interfacing.py", "itemChecker.py", "log.py"
+"""
 
 """
 Get Users Positional Data

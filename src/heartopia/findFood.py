@@ -3,10 +3,15 @@ import numpy as np
 import pyautogui
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
-from .log import log
+from ..log import log
 import pytesseract
 import json
 from difflib import SequenceMatcher
+
+"""
+Website: https://github.com/novadevvvv
+Dependencies: "log.py"
+"""
 
 # Path to Tesseract executable
 pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"

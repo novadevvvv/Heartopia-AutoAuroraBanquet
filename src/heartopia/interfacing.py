@@ -1,7 +1,12 @@
 import pyautogui
 from time import sleep as wait
 import random
-from .log import log
+from ..log import log
+
+"""
+Website: https://github.com/novadevvvv
+Dependencies: "log.py"
+"""
 
 def click(position : tuple, duration : float = 0.01):
 

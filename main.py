@@ -1,8 +1,14 @@
 from time import sleep as wait
 from src.log import log
-from src.interfacing import click
-from src.cookingManager import cookFood
+from src.heartopia.interfacing import click
+from src.heartopia.cookingManager import cookFood
+from src.heartopia.itemChecker import checkNewItem
 import json
+
+"""
+Website: https://github.com/novadevvvv
+Dependencies: Project in itself (https://github.com/novadevvvv/Heartopia-AutoAuroraBanquet)
+"""
 
 REQUIREMENTS = {
     "Steak": False,
@@ -25,11 +31,9 @@ for food in REQUIREMENTS:
 
     REQUIREMENTS[food] = SUCCESS
 
-    if SUCCESS:
-        log(f"Successfully Cooked {food}, Moving Onto Next Food...")
-    else:
-        log(f"Cooking {food} failed after appearance check.")
-        exit()
+    checkNewItem()
+
+    log(f"Successfully Cooked {food}, Moving Onto Next Food...")
 
     wait(1)
 
