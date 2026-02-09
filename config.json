@@ -1,7 +1,11 @@
 {
     "startCooking": {
-        "x": 1477,
-        "y": 998
+        "x": 1474,
+        "y": 995
+    },
+    "newItemCheck": {
+        "x": 525,
+        "y": 1019
     },
     "foodData": {
         "steak": "Steak w/ Mashed White Radish",

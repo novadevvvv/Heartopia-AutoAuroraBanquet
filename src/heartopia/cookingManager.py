@@ -16,10 +16,14 @@ with open("config.json", "r") as file:
 
 cookingPositionData = data.get("startCooking")
 
-if not cookingPositionData or "x" not in cookingPositionData or "y" not in cookingPositionData:
+with open("config.json", "r") as file:
+    data = json.load(file)
+
+newItemCheck = data.get("newItemCheck")
+
+if (not cookingPositionData or "x" not in cookingPositionData or "y" not in cookingPositionData):
     log(
-        "Once you hit Enter, tab into Heartopia, move your mouse over the "
-        "'Start Cooking' button, wait a couple seconds, then come back here."
+        "- ONE TIME ALIGNMENT -\nOnce you hit Enter, tab into Heartopia, move your mouse over the 'Start Cooking' button, wait a couple seconds, then come back here."
     )
     input("Press Enter to continue")
 
@@ -34,7 +38,26 @@ if not cookingPositionData or "x" not in cookingPositionData or "y" not in cooki
     log("Successfully set cooking position!")
     input("Press Enter to continue")
 
+if (not newItemCheck or "x" not in newItemCheck or "y" not in newItemCheck):
+    log(
+        "- ONE TIME ALIGNMENT -\nOnce you hit Enter, tab into Heartopia, move your mouse over the area where the white box appears 'bottom left corner', wait a couple seconds, then come back here."
+    )
+    input("Press Enter to continue")
+
+    wait(2)
+    pos = pyautogui.position()
+    cookingPosition = (pos.x, pos.y)
+
+    data["newItemCheck"] = {"x": pos.x, "y": pos.y}
+    with open("config.json", "w") as f:
+        json.dump(data, f, indent=4)
+
+    log("Successfully set new item check position!")
+    input("Press Enter to continue")
+
+
 cookingPosition = (cookingPositionData["x"], cookingPositionData["y"])
+newItemCheckPosition = (newItemCheck["x"], newItemCheck["y"])
 
 def cookFood(foodname : str) -> bool:
     """

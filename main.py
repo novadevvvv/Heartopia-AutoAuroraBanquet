@@ -2,6 +2,7 @@ from time import sleep as wait
 from src.log import log
 from src.interfacing import click
 from src.cookingManager import cookFood
+import json
 
 REQUIREMENTS = {
     "Steak": False,
@@ -24,5 +25,12 @@ for food in REQUIREMENTS:
 
     REQUIREMENTS[food] = SUCCESS
 
+    if SUCCESS:
+        log(f"Successfully Cooked {food}, Moving Onto Next Food...")
+    else:
+        log(f"Cooking {food} failed after appearance check.")
+        exit()
+
     wait(1)
+
 

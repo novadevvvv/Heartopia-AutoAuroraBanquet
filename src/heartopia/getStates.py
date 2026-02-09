@@ -17,7 +17,7 @@ settings = {
         "output": Path("detectedIcons")
     },
     "scale_factor": 0.5,   # downscale for speed
-    "threshold": 0.8       # template match threshold
+    "threshold": 0.65       # template match threshold
 }
 
 # Preload templates once
