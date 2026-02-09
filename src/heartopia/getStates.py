@@ -22,8 +22,12 @@ settings = {
         "output": Path("detectedIcons")
     },
     "scale_factor": 0.5,   # downscale for speed
-    "threshold": 0.65       # template match threshold
+    "threshold": 0.65,       # template match threshold
+    "log": False
 }
+
+def doNothing():
+    return
 
 # Preload templates once
 templates = {}
@@ -36,7 +40,7 @@ for iconName, filename in settings["icons"].items():
         else:
             templates[iconName] = (cv2.cvtColor(tmpl, cv2.COLOR_BGR2GRAY), None)
     else:
-        log(f"Template not found: {path}")
+        log(f"Template not found: {path}") if settings["log"] else doNothing()
 
 def nonMaxSuppression(boxes, overlapThresh=0.3):
     if len(boxes) == 0:
@@ -80,7 +84,7 @@ def detectOvens():
     idx = 0
 
     for iconName, (template_gray, mask) in templates.items():
-        log(f"Detecting: {iconName}")
+        log(f"Detecting: {iconName}") if settings["log"] else doNothing()
         if template_gray is None:
             continue
 
@@ -110,5 +114,5 @@ def detectOvens():
             idx += 1
 
     elapsed = time() - start_time
-    log(f"Oven detection done in {elapsed:.3f}s. Found {len(states)} icons.")
+    log(f"Oven detection done in {elapsed:.3f}s. Found {len(states)} icons.") if settings["log"] else doNothing()
     return states

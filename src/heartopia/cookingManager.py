@@ -104,32 +104,38 @@ def cookFood(foodname : str) -> bool:
 
         click(foodData[1]) # Click On The Food
 
+        pyautogui.screenshot(f"status/{foodname}.png")
+
         click(cookingPosition) # Submit Cook To Begin
 
     # Cooking Loop
 
     finishedCooking = False
 
+    lastState = None
+
     try:
         while not finishedCooking:
 
-            ovens = detectOvens() # Initial Oven Detection
+            ovens = detectOvens() # Oven Detection
 
             for oven in ovens:
-
+                
                 ovenName, ovenState, ovenPosition = oven
 
                 if "overheating" in ovenState.lower():
 
                     log(f"Oven {ovenName} is overheating!")
-                    click(ovenPosition)
+                    click(ovenPosition); lastState = ovenState if lastState != ovenState else log("Attempted to click but already clicked during this loop.")
 
                 elif "finished" in ovenState.lower():
 
                     log(f"Oven {ovenName} has finished cooking!")
-                    click(ovenPosition)
+                    click(ovenPosition); lastState = ovenState if lastState != ovenState else log("Attempted to click but already clicked during this loop.")
                     finishedCooking = True
                     break
+                else:
+                    lastState = ovenState
 
             wait(0.25)
 

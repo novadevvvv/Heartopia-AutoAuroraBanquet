@@ -5,6 +5,9 @@
 Tired of cooking banquets manually and constantly worrying about ratios? This script automates the process for you.  
 
 > **WARNING:** Use at your own risk. Macros **can be considered a bannable offense**. I take no responsibility for any consequences.
+> **WARNING:** I recommend setting your GUI scale to **75%**
+![uiScale](assets/uiScale.png)  
+> **WARNING:** I HIGHLY recommend to keep a load of each berry in your inventory, the OCR sometimes has issues detecting multi-line text!
 
 ---
 
@@ -17,9 +20,6 @@ Surround your oven with dark walls. This makes image recognition more accurate. 
 
 ### 2. Long Roof
 Be aware of sunlight and lens flare—it can interfere with detection. A long roof helps reduce this issue.  
-
-### 3. Single Floor
-Keep your oven area on a single floor to avoid interference from pets or other moving objects.
 
 ---
 
